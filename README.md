@@ -1,8 +1,8 @@
 #form validator
 
-###set form's novalidate attribute in order to avoid conflict
+set form's novalidate attribute in order to avoid conflict
 
-###if validate a form, all input, textarea with a name will be validated
+if validate a form, all input, textarea with a name will be validated
 
 ###keywords:
 
