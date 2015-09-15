@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>demo-FORM VALIDATOR</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+</head>
+<body>
+
+<form novalidate>
+	<p><input type="text" name="username" placeholder="username" required /></p>
+	<p><input type="tel" name="tel" placeholder="tel" required /></p>
+	<p><input type="email" name="email" placeholder="email" /></p>
+	<p><input type="url" name="url" placeholder="http://" /></p>
+	<p><input type="number" name="number" placeholder="10" min="10" max="30" /></p>
+	<p><input type="date" name="date" placeholder="2015-09-15" pattern="\d{4}\-\d{1,2}\-\d{1,2}" /></p>
+	<p><input type="text" name="description" placeholder="text with pattern" pattern="\[A-Z]{2}w{3}\d{1,5}" /></p>
+	<p><input type="submit" value="submit" />
+</form>
+<div></div>
+
+<script src="validator.js"></script>
+<script>
+(function(){
+	var form = document.querySelector('form'),
+		div = document.querySelector('div'),
+		paint = function(s){
+			var res = '', k, d;
+			if(typeof s === 'object'){
+				for(var k in s){
+					if(s.hasOwnProperty(k)){
+						d = s[k];
+						res += '<p>' + k + ':' + d.toString() + (d.name ? d.name : '') + '</p>';
+					}
+				}
+			}else{
+				res = '<p>' + s + '</p>';
+			}
+			div.innerHTML = res;
+		};
+	form.addEventListener('submit',function(e){
+		e.preventDefault();
+		Validator.validate(form,function(s){
+			if(s){
+				console.log(s);
+				paint(s);
+				return;
+			}
+			console.log('ok');
+			paint('ok');
+		});
+	});
+})();
+</script>
+</body>
+</html>
