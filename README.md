@@ -6,7 +6,7 @@ if validate a form, all input, textarea with a name will be validated
 
 ###keywords:
 
-#####required: value cannot be empty
+#####required: value cannot be empty.
 
 #####pattern: RegExp source to match the value. tel, number, email, url have default pattern, but also can be overrided
 
